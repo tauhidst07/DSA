@@ -1,0 +1,28 @@
+class Solution { 
+    int square (int num){
+        return num*num;
+    }
+public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        vector<int> result(nums.size(),0); 
+        int low,high,new_high; 
+        low =0;high=nums.size()-1; 
+        new_high=high; 
+
+        while(low<=high){
+            if(square(nums[high])>=square(nums[low])){
+                result[new_high]=square(nums[high]); 
+                high--; 
+                new_high--;
+            } 
+            else{
+                result[new_high]=square(nums[low]); 
+                low++; 
+                new_high--;
+            }
+        } 
+
+        return result;
+
+    }
+};
