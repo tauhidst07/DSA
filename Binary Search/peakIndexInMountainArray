@@ -5,23 +5,34 @@ public:
         s=0; 
         e=arr.size()-1; 
         mid = s+(e-s)/2; 
-        while(s<=e){ 
-            if(mid-1 < 0){ 
-                s=mid+1; 
-                mid = s+(e-s)/2; 
-                continue;
-            }
-            if(mid-1 >=0 && arr[mid] > arr[mid-1] && arr[mid] > arr[mid+1]){
-                return mid;
-            } 
+        // while(s<=e){ 
+        //     if(mid-1 < 0){ 
+        //         s=mid+1; 
+        //         mid = s+(e-s)/2; 
+        //         continue;
+        //     }
+        //     if(mid-1 >=0 && arr[mid] > arr[mid-1] && arr[mid] > arr[mid+1]){
+        //         return mid;
+        //     } 
+        //     if(arr[mid]<arr[mid+1]){
+        //         s=mid+1;
+        //     } 
+        //     if(arr[mid]>arr[mid+1]){
+        //         e=mid-1;
+        //     } 
+        //      mid = s+(e-s)/2; 
+        // } 
+        // return -1; 
+
+        while(s<e){
             if(arr[mid]<arr[mid+1]){
                 s=mid+1;
             } 
-            if(arr[mid]>arr[mid+1]){
-                e=mid-1;
+            else{
+                e=mid;
             } 
-             mid = s+(e-s)/2; 
+            mid = s+(e-s)/2; 
         } 
-        return -1;
+        return e;
     }
 };
