@@ -5,7 +5,8 @@ int longestSuccessiveElements(vector<int>&a) {
      for(int i=0;i<a.size();i++){
          mp[a[i]]=i;
      } 
-     for(int i=0;i<a.size();i++){
+     for(int i=0;i<a.size();i++){  
+         if(mp.find(a[i]-1)==mp.end()){
          int count=0;   
          int value=1;
          while(mp.find(a[i]+value)!=mp.end()){
@@ -13,7 +14,8 @@ int longestSuccessiveElements(vector<int>&a) {
              value++;
              
          } 
-         longest=max(count,longest);
+         longest=max(count,longest); 
+        }
      }
     return longest+1;
 }
