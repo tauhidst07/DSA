@@ -1,29 +1,27 @@
- vector<int> rearrangeArray(vector<int>& nums) {
-        vector<int> ans; 
-        int p=0;
-        int n=0;  
-        int pflag=true; 
-        int nflag=false; 
+class Solution {
+public:
+    vector<int> rearrangeArray(vector<int>& nums) {
+        vector<int> ans(nums.size(),0); 
+        int index=0; 
+        int p=0; 
+        int n=0; 
         int size = nums.size();
-        while(p<size || n<size){
-            if(p<size && nums[p]>0 && pflag){
-                ans.push_back(nums[p]); 
-                p++; 
-                pflag=false; 
-                nflag=true;
-            } 
-            if(p<size && nums[p]<0){
+        while(index<size){
+            while(p<size && nums[p]<0){
                 p++;
+            }    
+            if(p<size){
+            ans[index]=nums[p]; 
+            index++;p++; 
             }
-            if(n<size && nums[n]<0 && nflag){
-                ans.push_back(nums[n]); 
-                n++; 
-                pflag=true; 
-                nflag=false;
-            } 
-            if(n<size && nums[n]>0){
+            while(n<size && nums[n]>=0){
                 n++;
+            }  
+            if(n<size){
+            ans[index]=nums[n]; 
+            index++;n++;
             }
         } 
         return ans;
     }
+};
